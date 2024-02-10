@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-// import 'package:weather_animation/weather_animation.dart';
+import 'package:weatherapp/widgets/thermometr.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -86,6 +86,10 @@ class HomeScreen extends StatelessWidget {
                                 color: Colors.white,
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold)),
+                        const Thermometer(
+                          temperature: 20.0,
+                        ),
+
                         // WeatherSceneWidget(weatherScene: WeatherScene.sunset)
                       ],
                     ),
