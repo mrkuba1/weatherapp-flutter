@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:weatherapp/models/city.dart';
 
 class ChoiceScreen extends StatefulWidget {
+  const ChoiceScreen({super.key});
+
   @override
   _ChoiceScreenState createState() => _ChoiceScreenState();
 }
@@ -22,7 +24,7 @@ class _ChoiceScreenState extends State<ChoiceScreen> {
         itemCount: cities.length,
         itemBuilder: (BuildContext context, int index) {
           return Container(
-            padding: EdgeInsets.symmetric(horizontal: 10.0),
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(40)),
             child: Row(
               children: [

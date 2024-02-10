@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:weatherapp/screens/choice_screen.dart';
+import 'package:weatherapp/screens/weather_screen.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  @override
   Widget build(BuildContext context) {
+    TextEditingController cityController = TextEditingController();
+
     return Scaffold(
       backgroundColor: Colors.amber,
       body: Center(
@@ -19,10 +16,45 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset("assets/home.png"),
+            SizedBox(
+              height: 100,
+              width: 200,
+              child: TextField(
+                controller: cityController,
+                decoration: const InputDecoration(
+                  hintText: 'Enter city',
+                ),
+              ),
+            ),
             GestureDetector(
               onTap: () {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => ChoiceScreen()));
+                String cityName = cityController.text;
+                if (cityName.isEmpty) {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: const Text("Empty City Name"),
+                        content: const Text("Please enter a city name."),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text("OK"),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                } else {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => WeatherScreen(cityName: cityName),
+                    ),
+                  );
+                }
               },
               child: Container(
                 height: 100,
@@ -35,9 +67,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Text(
                     "Push the button",
                     style: TextStyle(
-                        fontWeight: FontWeight.w300,
-                        color: Colors.white,
-                        fontSize: 20),
+                      fontWeight: FontWeight.w300,
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
                   ),
                 ),
               ),

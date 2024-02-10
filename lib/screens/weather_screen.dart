@@ -1,20 +1,20 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:weatherapp/screens/home_screen.dart';
 import 'package:weatherapp/widgets/thermometr.dart';
 import 'package:weatherapp/widgets/weather_future.dart';
 import 'package:weatherapp/widgets/weather_info.dart';
 
 class WeatherScreen extends StatelessWidget {
-  const WeatherScreen({super.key});
+  final String cityName;
+
+  const WeatherScreen({Key? key, required this.cityName}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.black,
-        // appBar: AppBar(
-        //   backgroundColor: Colors.transparent,
-        // ),
         body: Padding(
             padding:
                 const EdgeInsets.fromLTRB(40, 1.2 * kToolbarHeight, 40, 20),
@@ -73,28 +73,59 @@ class WeatherScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text('Moje miasto to Białystok',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w300)),
-                        const SizedBox(height: 8.0),
-                        Text(
-                            DateTime.now().hour < 12
-                                ? 'Good Morning'
-                                : DateTime.now().hour < 18
-                                    ? 'Good Afternoon'
-                                    : 'Good Night',
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold)),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text('Moje miasto to $cityName',
+                                    style: const TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w300)),
+                                const SizedBox(height: 8.0),
+                                Text(
+                                    DateTime.now().hour < 12
+                                        ? 'Good Morning'
+                                        : DateTime.now().hour < 18
+                                            ? 'Good Afternoon'
+                                            : 'Good Night',
+                                    style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold)),
+                              ],
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const HomeScreen(),
+                                  ),
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.amber,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.amber,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: const Center(child: Icon(Icons.home)),
+                              ),
+                            ),
+                          ],
+                        ),
                         const Thermometer(
                           temperature: 20.0,
                         ),
                         const WeatherInfo(),
                         const WeatherFuture(),
-
-                        // WeatherSceneWidget(weatherScene: WeatherScene.sunset)
                       ],
                     ),
                   )
