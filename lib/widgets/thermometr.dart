@@ -24,10 +24,10 @@ class Thermometer extends StatelessWidget {
     colors: [
       Colors.red,
       Colors.orange,
-      Colors.yellow,
+      Colors.amber,
       Colors.green,
       Colors.lightBlue,
-      Colors.blue,
+      Colors.blueGrey,
     ],
   );
 
@@ -61,26 +61,35 @@ class Thermometer extends StatelessWidget {
         children: [
           Container(
             alignment: Alignment.bottomCenter,
-            height: 400,
+            height: 300,
             child: AnimatedContainer(
-              clipBehavior: Clip.none,
-              height: (heightFactor * 400).clamp(50, 400),
-              alignment: Alignment.topCenter,
-              duration: const Duration(milliseconds: 500),
-              child: TemperatureLabel(
-                temperature: temperature,
-              ),
-            ),
+                clipBehavior: Clip.none,
+                height: (heightFactor * 400).clamp(50, 300),
+                alignment: Alignment.topCenter,
+                duration: const Duration(milliseconds: 500),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      "assets/1.png",
+                      scale: 3,
+                    ),
+                    TemperatureLabel(
+                      temperature: temperature,
+                    ),
+                  ],
+                )),
           ),
-          const SizedBox(width: 16),
+          const SizedBox(width: 10),
           ClipRRect(
             borderRadius: BorderRadius.circular(50),
             child: Stack(
               alignment: Alignment.bottomCenter,
               children: [
                 AnimatedContainer(
-                  width: 100,
-                  height: heightFactor * 400,
+                  width: 50,
+                  height: heightFactor * 150,
                   duration: const Duration(milliseconds: 500),
                   curve: Curves.easeInOut,
                   decoration: BoxDecoration(
@@ -97,13 +106,13 @@ class Thermometer extends StatelessWidget {
                     color: Colors.transparent,
                     shape: StadiumBorder(
                       side: BorderSide(
-                        color: Colors.white,
+                        color: Colors.black,
                         width: 4,
                       ),
                     ),
                   ),
-                  width: 100,
-                  height: 400,
+                  width: 50,
+                  height: 150,
                 ),
               ],
             ),
