@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:weatherapp/data/core/weather_client.dart';
 import 'package:weatherapp/screens/home_screen.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  // runApp(const MyApp());
+  final forecast = await WeatherClient().getCurrent("Warszawa");
+  print(forecast);
 }
 
 class MyApp extends StatelessWidget {
