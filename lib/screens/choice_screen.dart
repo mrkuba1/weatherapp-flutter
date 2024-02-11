@@ -5,6 +5,7 @@ class ChoiceScreen extends StatefulWidget {
   const ChoiceScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _ChoiceScreenState createState() => _ChoiceScreenState();
 }
 
@@ -49,6 +50,7 @@ class _ChoiceScreenState extends State<ChoiceScreen> {
         backgroundColor: Colors.blue,
         child: const Icon(Icons.pin_drop),
         onPressed: () {
+          // ignore: avoid_print
           print(selectedCities.toString());
         },
       ),

@@ -3,7 +3,6 @@ class City {
   final String name;
   final String country;
   final bool isDefault;
-
   City({
     required this.country,
     required this.isSelected,
