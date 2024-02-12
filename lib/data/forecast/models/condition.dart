@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 class Condition {
   final String text;
   final String icon;
@@ -24,5 +27,20 @@ class Condition {
         'icon: $icon, '
         'code: $code '
         '}';
+  }
+
+  String decode(int code) {
+    late List<Map<String, dynamic>> weatherData;
+    String filePath =
+        '/Users/kuba/Documents/Projekty/flutterApps/weatherapp-flutter/assets/weather_conditions.json';
+
+    String data = File(filePath).readAsStringSync();
+    weatherData = json.decode(data).cast<Map<String, dynamic>>();
+    for (Map<String, dynamic> obj in weatherData) {
+      if (obj['code'] == code) {
+        return 'assets/${obj['icon']}.png';
+      }
+    }
+    return '';
   }
 }
