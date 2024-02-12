@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weatherapp/bloc/weather_bloc.dart';
+import 'package:weatherapp/bloc/weather_event.dart';
 import 'package:weatherapp/screens/weather_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -48,6 +51,8 @@ class HomeScreen extends StatelessWidget {
                     },
                   );
                 } else {
+                  final forecastBloc = BlocProvider.of<ForecastBloc>(context);
+                  forecastBloc.add(FetchForecast(cityName));
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
