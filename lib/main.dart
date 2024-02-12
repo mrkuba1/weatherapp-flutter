@@ -4,8 +4,8 @@ import 'package:weatherapp/screens/home_screen.dart';
 
 Future<void> main() async {
   // runApp(const MyApp());
-  final forecast = await WeatherClient().getCurrent("Warszawa");
-  print(forecast);
+  final forecast = await WeatherClient().getForecast("Warszawa");
+  print(forecast.forecastday);
 }
 
 class MyApp extends StatelessWidget {

@@ -19,7 +19,7 @@ enum WeatherClientPath {
         'api.weatherapi.com',
         '',
         <String, dynamic>{
-          'key': Secrets.apiKey,
+          'key': Secrets.apiKey(),
           'aqi': 'no',
         },
       );
