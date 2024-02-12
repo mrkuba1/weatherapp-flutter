@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:weatherapp/data/core/weather_client.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weatherapp/bloc/weather_bloc.dart';
 import 'package:weatherapp/screens/home_screen.dart';
 
-Future<void> main() async {
-  // runApp(const MyApp());
-  final forecast = await WeatherClient().getForecast("Warszawa");
-  print(forecast.forecastday);
+void main() {
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -13,9 +12,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
-    );
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: BlocProvider(
+          create: (context) => ForecastBloc(),
+          child: const MaterialApp(
+            home: HomeScreen(),
+          ),
+        ));
   }
 }

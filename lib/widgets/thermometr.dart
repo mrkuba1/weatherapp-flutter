@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:weatherapp/data/forecast/models/forecast.dart';
 import 'package:weatherapp/widgets/gradient_extension.dart';
 
 class Thermometer extends StatelessWidget {
-  final double temperature;
+  final Forecast forecast;
 
   const Thermometer({
     super.key,
-    required this.temperature,
+    required this.forecast,
   });
 
   static const double _minTemperature = -20.0;
@@ -51,8 +52,8 @@ class Thermometer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final heightFactor = _getHeightFactor(temperature);
-    final color = _getColor(temperature);
+    final heightFactor = _getHeightFactor(forecast.current.tempC);
+    final color = _getColor(forecast.current.tempC);
 
     return Center(
       child: Flex(
@@ -61,27 +62,41 @@ class Thermometer extends StatelessWidget {
         children: [
           Container(
             alignment: Alignment.bottomCenter,
-            height: 300,
+            height: 150,
             child: AnimatedContainer(
-                clipBehavior: Clip.none,
-                height: (heightFactor * 400).clamp(50, 300),
-                alignment: Alignment.topCenter,
-                duration: const Duration(milliseconds: 500),
-                child: Column(
+              clipBehavior: Clip.none,
+              height: (heightFactor * 400).clamp(50, 500),
+              alignment: Alignment.topCenter,
+              duration: const Duration(milliseconds: 500),
+              curve: Curves.easeInOut,
+              child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.asset(
-                      "assets/1.png",
-                      scale: 3,
+                    Image.asset(forecast.forecastday[0].day.condition
+                            .decode(forecast.forecastday[0].day.condition.code)
+                        // "assets/113.png",
+                        //  scale: 6,
+                        ),
+                    Row(
+                      children: [
+                        const SizedBox(width: 20),
+                        TemperatureLabel(
+                          temperature: forecast.current.tempC,
+                        ),
+                      ],
                     ),
-                    TemperatureLabel(
-                      temperature: temperature,
+                    Text(
+                      forecast.current.condition.text,
+                      style: const TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
                     ),
-                  ],
-                )),
+                  ]),
+            ),
           ),
-          const SizedBox(width: 10),
+          const SizedBox(width: 16),
           ClipRRect(
             borderRadius: BorderRadius.circular(50),
             child: Stack(
@@ -134,20 +149,14 @@ class TemperatureLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 150,
+      width: 100,
       child: Row(
         children: [
-          Text(temperature.toString(),
-              style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold)),
-          const SizedBox(width: 4),
-          const Text('°C',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold)),
+          Text(
+            '${temperature.round().toString()} °C',
+            style: const TextStyle(
+                fontSize: 15, fontWeight: FontWeight.bold, color: Colors.white),
+          ),
         ],
       ),
     );

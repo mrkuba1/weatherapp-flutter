@@ -1,7 +1,12 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:weatherapp/data/forecast/models/forecast.dart';
 
 class WeatherInfo extends StatelessWidget {
-  const WeatherInfo({super.key});
+  final Forecast forecast;
+
+  const WeatherInfo({Key? key, required this.forecast}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,28 +17,30 @@ class WeatherInfo extends StatelessWidget {
           Row(
             children: [
               Image.asset(
-                'assets/11.png',
-                scale: 8,
+                'assets/sunrise.png',
+                scale: 9,
               ),
               const SizedBox(
                 width: 2,
               ),
-              const Column(
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "Sunrise",
                     style: TextStyle(
                       color: Colors.white,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 3,
                   ),
                   Text(
-                    '33:33',
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold),
+                    forecast.forecastday[0].astro.sunrise,
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12.0),
                   )
                 ],
               ),
@@ -42,28 +49,31 @@ class WeatherInfo extends StatelessWidget {
           Row(
             children: [
               Image.asset(
-                'assets/15.png',
-                scale: 11,
+                'assets/windy.png',
+                scale: 12,
               ),
               const SizedBox(
-                width: 5,
+                width: 10,
               ),
-              const Column(
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "direction",
+                  const Text(
+                    "Wind",
                     style: TextStyle(
                       color: Colors.white,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 3,
                   ),
                   Text(
-                    '132 m/s',
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold),
+                    forecast.current.gustKph.toString(),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12.0,
+                    ),
                   )
                 ],
               ),
@@ -72,28 +82,31 @@ class WeatherInfo extends StatelessWidget {
           Row(
             children: [
               Image.asset(
-                'assets/12.png',
-                scale: 8,
+                'assets/sunset.png',
+                scale: 9,
               ),
               const SizedBox(
                 height: 5,
               ),
-              const Column(
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "Sunset",
                     style: TextStyle(
                       color: Colors.white,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 3,
                   ),
                   Text(
-                    '20:33',
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold),
+                    forecast.forecastday[0].astro.sunset,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12.0,
+                    ),
                   )
                 ],
               ),
@@ -113,13 +126,13 @@ class WeatherInfo extends StatelessWidget {
           Row(
             children: [
               Image.asset(
-                'assets/13.png',
-                scale: 8,
+                'assets/max_temp.png',
+                scale: 9,
               ),
               const SizedBox(
                 width: 2,
               ),
-              const Column(
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
@@ -132,7 +145,7 @@ class WeatherInfo extends StatelessWidget {
                     height: 3,
                   ),
                   Text(
-                    '33',
+                    forecast.forecastday[0].day.maxtempC.toString(),
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   )
@@ -149,7 +162,7 @@ class WeatherInfo extends StatelessWidget {
               const SizedBox(
                 width: 5,
               ),
-              const Column(
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
@@ -162,7 +175,7 @@ class WeatherInfo extends StatelessWidget {
                     height: 3,
                   ),
                   Text(
-                    '23%',
+                    '${forecast.current.humidity.toString()} %',
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   )
@@ -173,13 +186,13 @@ class WeatherInfo extends StatelessWidget {
           Row(
             children: [
               Image.asset(
-                'assets/14.png',
-                scale: 8,
+                'assets/min_temp.png',
+                scale: 9,
               ),
               const SizedBox(
                 height: 5,
               ),
-              const Column(
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
@@ -192,7 +205,7 @@ class WeatherInfo extends StatelessWidget {
                     height: 3,
                   ),
                   Text(
-                    '-23',
+                    forecast.forecastday[0].day.mintempC.toString(),
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   )

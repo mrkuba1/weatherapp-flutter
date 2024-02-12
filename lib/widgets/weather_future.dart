@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:weatherapp/data/forecast/models/forecast.dart';
 
 class WeatherFuture extends StatelessWidget {
-  const WeatherFuture({super.key});
+  final Forecast forecast;
+
+  const WeatherFuture({Key? key, required this.forecast}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Padding(
+        Padding(
           padding: EdgeInsets.symmetric(vertical: 5.0),
           child: Divider(
             color: Colors.grey,
@@ -20,10 +23,10 @@ class WeatherFuture extends StatelessWidget {
           children: [
             Column(
               children: [
-                const SizedBox(
+                SizedBox(
                   height: 5,
                 ),
-                const Column(
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
@@ -42,18 +45,18 @@ class WeatherFuture extends StatelessWidget {
                     )
                   ],
                 ),
-                Image.asset(
-                  'assets/1.png',
-                  scale: 8,
-                ),
+                // Image.asset(
+                //   'assets/1.png',
+                //   scale: 8,
+                // ),
               ],
             ),
             Column(
               children: [
-                const SizedBox(
+                SizedBox(
                   height: 5,
                 ),
-                const Column(
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
@@ -72,18 +75,18 @@ class WeatherFuture extends StatelessWidget {
                     )
                   ],
                 ),
-                Image.asset(
-                  'assets/1.png',
-                  scale: 8,
-                ),
+                // Image.asset(
+                //   'assets/1.png',
+                //   scale: 8,
+                // ),
               ],
             ),
             Column(
               children: [
-                const SizedBox(
+                SizedBox(
                   height: 5,
                 ),
-                const Column(
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
@@ -102,18 +105,18 @@ class WeatherFuture extends StatelessWidget {
                     )
                   ],
                 ),
-                Image.asset(
-                  'assets/2.png',
-                  scale: 8,
-                ),
+                // Image.asset(
+                //   'assets/2.png',
+                //   scale: 8,
+                // ),
               ],
             ),
             Column(
               children: [
-                const SizedBox(
+                SizedBox(
                   height: 5,
                 ),
-                const Column(
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
@@ -132,18 +135,18 @@ class WeatherFuture extends StatelessWidget {
                     )
                   ],
                 ),
-                Image.asset(
-                  'assets/2.png',
-                  scale: 8,
-                ),
+                // Image.asset(
+                //   'assets/2.png',
+                //   scale: 8,
+                // ),
               ],
             ),
             Column(
               children: [
-                const SizedBox(
+                SizedBox(
                   height: 5,
                 ),
-                const Column(
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
@@ -162,15 +165,15 @@ class WeatherFuture extends StatelessWidget {
                     )
                   ],
                 ),
-                Image.asset(
-                  'assets/2.png',
-                  scale: 8,
-                ),
+                // Image.asset(
+                //   'assets/2.png',
+                //   scale: 8,
+                // ),
               ],
             ),
           ],
         ),
-        const Padding(
+        Padding(
           padding: EdgeInsets.symmetric(vertical: 5.0),
           child: Divider(
             color: Colors.grey,
