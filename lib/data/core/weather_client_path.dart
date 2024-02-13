@@ -39,18 +39,14 @@ enum WeatherClientPath {
     );
   }
 
-  Uri getUriForecast([String? query]) {
-    if (query == null) {
-      return Uri.https(
-        baseUri.authority,
-        path,
-        baseUri.queryParameters,
-      );
-    }
+  Uri getUriForecast(String? city) {
     return Uri.https(
       baseUri.authority,
-      WeatherClientPath.forecast.path,
-      <String, dynamic>{...baseUri.queryParameters, 'q': query},
+      path,
+      {
+        'q': city,
+        'days': '10',
+      }..addAll(baseUri.queryParameters),
     );
   }
 }
