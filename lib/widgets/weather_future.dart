@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weatherapp/data/forecast/models/forecast.dart';
+import 'package:weatherapp/screens/detail_page.dart'; // Importuje Twoją nową stronę
 
 class WeatherFuture extends StatelessWidget {
   final Forecast forecast;
@@ -8,172 +9,88 @@ class WeatherFuture extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
+        const SizedBox(height: 10),
+        const Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              'Today',
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  color: Colors.white),
+            ),
+            Text(
+              'Next 2 Days',
+              style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 15,
+                  color: Colors.white),
+            ),
+          ],
+        ),
+        const Padding(
           padding: EdgeInsets.symmetric(vertical: 5.0),
           child: Divider(
             color: Colors.grey,
           ),
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              children: [
-                SizedBox(
-                  height: 5,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Monday",
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 120,
+                width: 200,
+                child: Center(
+                  child: ListView.separated(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: forecast.forecastday.length,
+                    separatorBuilder: (context, index) => const Divider(
+                      color: Colors.grey,
                     ),
-                    SizedBox(
-                      height: 3,
-                    ),
-                    Text(
-                      '33:33',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
-                    )
-                  ],
+                    itemBuilder: (BuildContext context, int index) {
+                      var forecastData = forecast.forecastday[index];
+                      if (index == 0) {
+                        return Container();
+                      }
+                      return SizedBox(
+                        width: 100,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      DetailScreen(forecastday: forecastData)),
+                            );
+                          },
+                          child: Container(
+                            margin: const EdgeInsets.all(8),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Image.asset(forecastData.day.condition
+                                    .decode(forecastData.day.condition.code)),
+                                Text(forecastData.date),
+                                Text('${forecastData.day.avgtempC.round()}°C'),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
                 ),
-                // Image.asset(
-                //   'assets/1.png',
-                //   scale: 8,
-                // ),
-              ],
-            ),
-            Column(
-              children: [
-                SizedBox(
-                  height: 5,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Tuesday",
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 3,
-                    ),
-                    Text(
-                      '20:33',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
-                    )
-                  ],
-                ),
-                // Image.asset(
-                //   'assets/1.png',
-                //   scale: 8,
-                // ),
-              ],
-            ),
-            Column(
-              children: [
-                SizedBox(
-                  height: 5,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Wednesday",
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 3,
-                    ),
-                    Text(
-                      '20:33',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
-                    )
-                  ],
-                ),
-                // Image.asset(
-                //   'assets/2.png',
-                //   scale: 8,
-                // ),
-              ],
-            ),
-            Column(
-              children: [
-                SizedBox(
-                  height: 5,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Thursday",
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 3,
-                    ),
-                    Text(
-                      '20:33',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
-                    )
-                  ],
-                ),
-                // Image.asset(
-                //   'assets/2.png',
-                //   scale: 8,
-                // ),
-              ],
-            ),
-            Column(
-              children: [
-                SizedBox(
-                  height: 5,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Friday",
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 3,
-                    ),
-                    Text(
-                      '20:33',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
-                    )
-                  ],
-                ),
-                // Image.asset(
-                //   'assets/2.png',
-                //   scale: 8,
-                // ),
-              ],
-            ),
-          ],
-        ),
-        Padding(
+              ),
+            ]),
+        const Padding(
           padding: EdgeInsets.symmetric(vertical: 5.0),
           child: Divider(
             color: Colors.grey,
