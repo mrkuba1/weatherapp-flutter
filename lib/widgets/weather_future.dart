@@ -45,8 +45,8 @@ class WeatherFuture extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: 120,
-                width: 200,
+                height: 130,
+                width: 260,
                 child: Center(
                   child: ListView.separated(
                     scrollDirection: Axis.horizontal,
@@ -60,7 +60,7 @@ class WeatherFuture extends StatelessWidget {
                         return Container();
                       }
                       return SizedBox(
-                        width: 100,
+                        width: 130,
                         child: GestureDetector(
                           onTap: () {
                             Navigator.push(
@@ -78,8 +78,20 @@ class WeatherFuture extends StatelessWidget {
                               children: [
                                 Image.asset(forecastData.day.condition
                                     .decode(forecastData.day.condition.code)),
-                                Text(forecastData.date),
-                                Text('${forecastData.day.avgtempC.round()}°C'),
+                                Text(
+                                  forecastData.date,
+                                  style: const TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 12),
+                                ),
+                                Text(
+                                  '${forecastData.day.avgtempC.round()}°C',
+                                  style: const TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 12),
+                                ),
                               ],
                             ),
                           ),
@@ -97,16 +109,16 @@ class WeatherFuture extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 100,
+          height: 40,
           child: GestureDetector(
               onTap: () {
-                // Navigator.push(
-                //     // context,
-                //     // MaterialPageRoute(
-                //     // builder: (context) =>
-                //     //     DetailScreenDay(forecastday: forecastData),
-                //     // ),
-                //     );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        DetailScreen(forecastday: forecast.forecastday[0]),
+                  ),
+                );
               },
               child: const Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -121,11 +133,11 @@ class WeatherFuture extends StatelessWidget {
                     ),
                   ])),
         ),
-        const SizedBox(height: 100),
+        const SizedBox(height: 90),
         Center(
             child: Text(
           'Last update ${forecast.current.lastUpdated}',
-          style: TextStyle(color: Colors.grey),
+          style: const TextStyle(color: Colors.grey),
         )),
       ],
     );

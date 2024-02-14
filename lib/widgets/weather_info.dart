@@ -215,6 +215,104 @@ class WeatherInfo extends StatelessWidget {
           ),
         ],
       ),
+      const SizedBox(
+        height: 20,
+      ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              Image.asset(
+                'assets/rain.png',
+                scale: 9,
+              ),
+              const SizedBox(
+                width: 2,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Rain",
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 3,
+                  ),
+                  Text(
+                    '${forecast.forecastday[0].day.dailyChanceOfRain} %',
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  )
+                ],
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Image.asset(
+                'assets/cloud.png',
+                scale: 11,
+              ),
+              const SizedBox(
+                width: 5,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Cloud",
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 3,
+                  ),
+                  Text(
+                    '${forecast.current.cloud} %',
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  )
+                ],
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Image.asset(
+                'assets/snow.png',
+                scale: 9,
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Snow",
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 3,
+                  ),
+                  Text(
+                    '${forecast.forecastday[0].day.dailyChanceOfSnow} %',
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  )
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
     ]);
   }
 }

@@ -2,7 +2,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weatherapp/bloc/weather_bloc.dart';
-import 'package:weatherapp/bloc/weather_event.dart';
 import 'package:weatherapp/bloc/weather_state.dart';
 import 'package:weatherapp/screens/home_screen.dart';
 import 'package:weatherapp/widgets/thermometr.dart';
@@ -17,10 +16,19 @@ class WeatherScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(),
-      backgroundColor: Colors.black,
-      body: BlocBuilder<ForecastBloc, ForecastBlocState>(
-        builder: (context, state) {
+        // appBar: AppBar(
+        //   backgroundColor: Colors.transparent,
+        //   iconTheme: const IconThemeData(color: Colors.white),
+        //   flexibleSpace: BackdropFilter(
+        //     filter: ImageFilter.blur(sigmaX: 100.0, sigmaY: 100.0),
+        //     child: Container(
+        //       decoration: const BoxDecoration(color: Colors.transparent),
+        //     ),
+        //   ),
+        // ),
+        backgroundColor: Colors.black,
+        body: BlocBuilder<ForecastBloc, ForecastBlocState>(
+            builder: (context, state) {
           if (state is ForecastBlocLoading) {
             return const Center(
               child: CircularProgressIndicator(),
@@ -154,12 +162,109 @@ class WeatherScreen extends StatelessWidget {
               ),
             );
           } else {
-            return const Center(
-              child: Text('Failed to fetch weather data'),
-            );
+            return Padding(
+                padding:
+                    const EdgeInsets.fromLTRB(40, 1.2 * kToolbarHeight, 40, 20),
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height,
+                  child: Stack(children: [
+                    Align(
+                        alignment: const AlignmentDirectional(2, -0.1),
+                        child: Container(
+                          height: 250,
+                          width: 250,
+                          decoration: const BoxDecoration(
+                              color: Colors.green, shape: BoxShape.circle),
+                        )),
+                    Align(
+                        alignment: const AlignmentDirectional(-2, -0.1),
+                        child: Container(
+                          height: 250,
+                          width: 250,
+                          decoration: const BoxDecoration(
+                              color: Colors.green, shape: BoxShape.circle),
+                        )),
+                    Align(
+                        alignment: const AlignmentDirectional(3, -1.5),
+                        child: Container(
+                          height: 300,
+                          width: 300,
+                          decoration: BoxDecoration(
+                              color: DateTime.now().hour < 12
+                                  ? Colors.cyan
+                                  : Colors.purple,
+                              shape: BoxShape.circle),
+                        )),
+                    Align(
+                        alignment: const AlignmentDirectional(-3, -1.5),
+                        child: Container(
+                          height: 300,
+                          width: 300,
+                          decoration: BoxDecoration(
+                              color: DateTime.now().hour < 12
+                                  ? Colors.cyan
+                                  : Colors.purple,
+                              shape: BoxShape.circle),
+                        )),
+                    BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 100.0, sigmaY: 100.0),
+                      child: Container(
+                        decoration:
+                            const BoxDecoration(color: Colors.transparent),
+                      ),
+                    ),
+                    Center(
+                        child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'Failed to fetch weather data',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15),
+                        ),
+                        const SizedBox(
+                          height: 40,
+                        ),
+                        Container(
+                          height: 50,
+                          width: 80,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.red,
+                          ),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const HomeScreen(),
+                                ),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.transparent,
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                            ),
+                            child: const Text(
+                              'Exit',
+                              style: TextStyle(
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ))
+                  ]),
+                ));
           }
-        },
-      ),
-    );
+        }));
   }
 }
