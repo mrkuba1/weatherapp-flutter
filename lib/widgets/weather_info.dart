@@ -145,7 +145,7 @@ class WeatherInfo extends StatelessWidget {
                     height: 3,
                   ),
                   Text(
-                    forecast.forecastday[0].day.maxtempC.toString(),
+                    '${forecast.forecastday[0].day.maxtempC.round().toString()}°C',
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   )
@@ -205,7 +205,7 @@ class WeatherInfo extends StatelessWidget {
                     height: 3,
                   ),
                   Text(
-                    forecast.forecastday[0].day.mintempC.toString(),
+                    '${forecast.forecastday[0].day.mintempC.round().toString()}°C',
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   )

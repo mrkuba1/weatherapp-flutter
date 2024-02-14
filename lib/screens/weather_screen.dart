@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weatherapp/bloc/weather_bloc.dart';
+import 'package:weatherapp/bloc/weather_event.dart';
 import 'package:weatherapp/bloc/weather_state.dart';
 import 'package:weatherapp/screens/home_screen.dart';
 import 'package:weatherapp/widgets/thermometr.dart';
@@ -16,6 +17,7 @@ class WeatherScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // appBar: AppBar(),
       backgroundColor: Colors.black,
       body: BlocBuilder<ForecastBloc, ForecastBlocState>(
         builder: (context, state) {
@@ -24,7 +26,17 @@ class WeatherScreen extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           } else if (state is ForecastBlocSuccess) {
-            return Padding(
+            return
+                // SingleChildScrollView(
+                //     physics: AlwaysScrollableScrollPhysics(),
+                //     child: RefreshIndicator(
+                //         onRefresh: () async {
+                //           final forecastBloc =
+                //               BlocProvider.of<ForecastBloc>(context);
+                //           forecastBloc.add(FetchForecast(cityName));
+                //         },
+                //         child:
+                Padding(
               padding:
                   const EdgeInsets.fromLTRB(40, 1.2 * kToolbarHeight, 40, 20),
               child: SizedBox(
@@ -121,13 +133,11 @@ class WeatherScreen extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                 ),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.amber,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: const Center(child: Icon(Icons.home)),
-                                ),
+                                child: const Center(
+                                    child: Icon(
+                                  Icons.arrow_back_ios_new,
+                                  // color: Colors.white,
+                                )),
                               ),
                             ],
                           ),

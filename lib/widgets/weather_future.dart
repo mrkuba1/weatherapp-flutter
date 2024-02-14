@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weatherapp/data/forecast/models/forecast.dart';
-import 'package:weatherapp/screens/detail_page.dart'; // Importuje Twoją nową stronę
+import 'package:weatherapp/screens/detail_page.dart';
 
 class WeatherFuture extends StatelessWidget {
   final Forecast forecast;
@@ -19,10 +19,10 @@ class WeatherFuture extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              'Today',
+              '',
               style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 15,
                   color: Colors.white),
             ),
             Text(
@@ -35,7 +35,7 @@ class WeatherFuture extends StatelessWidget {
           ],
         ),
         const Padding(
-          padding: EdgeInsets.symmetric(vertical: 5.0),
+          padding: EdgeInsets.symmetric(vertical: 1.0),
           child: Divider(
             color: Colors.grey,
           ),
@@ -91,11 +91,42 @@ class WeatherFuture extends StatelessWidget {
               ),
             ]),
         const Padding(
-          padding: EdgeInsets.symmetric(vertical: 5.0),
+          padding: EdgeInsets.symmetric(vertical: 1.0),
           child: Divider(
             color: Colors.grey,
           ),
         ),
+        SizedBox(
+          height: 100,
+          child: GestureDetector(
+              onTap: () {
+                // Navigator.push(
+                //     // context,
+                //     // MaterialPageRoute(
+                //     // builder: (context) =>
+                //     //     DetailScreenDay(forecastday: forecastData),
+                //     // ),
+                //     );
+              },
+              child: const Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'More details',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                          color: Colors.white),
+                    ),
+                  ])),
+        ),
+        const SizedBox(height: 100),
+        Center(
+            child: Text(
+          'Last update ${forecast.current.lastUpdated}',
+          style: TextStyle(color: Colors.grey),
+        )),
       ],
     );
   }
