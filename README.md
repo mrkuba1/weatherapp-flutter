@@ -58,7 +58,7 @@ If you encounter any issues related to installation or using the application, pl
 
 ## Author
 
-Full Name - [mrkuba1](github.com/mrkuba1) 
+Jakub Sierocki - [mrkuba1](github.com/mrkuba1) 
 
 ## License
 
