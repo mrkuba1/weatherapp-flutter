@@ -47,8 +47,9 @@ class Secrets {
 
 ## Screenshots
 
-![Weather App Screenshot](images/homescreen.png){width=50%}
-![Weather App Screenshot](images/weatherscreen.png){width=50%}
+
+<img src="screenshots/homescreen.png" alt="drawing" width="200"/>
+<img src="screenshots/weatherscreen.png" alt="drawing" width="200"/>
 
 
 ## Support
