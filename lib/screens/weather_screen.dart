@@ -16,16 +16,26 @@ class WeatherScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // appBar: AppBar(
-        //   backgroundColor: Colors.transparent,
-        //   iconTheme: const IconThemeData(color: Colors.white),
-        //   flexibleSpace: BackdropFilter(
-        //     filter: ImageFilter.blur(sigmaX: 100.0, sigmaY: 100.0),
-        //     child: Container(
-        //       decoration: const BoxDecoration(color: Colors.transparent),
-        //     ),
-        //   ),
-        // ),
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          iconTheme: const IconThemeData(color: Colors.white),
+          title: Text(
+              DateTime.now().hour < 12
+                  ? 'Good Morning'
+                  : DateTime.now().hour < 18
+                      ? 'Good Afternoon'
+                      : 'Good Night',
+              style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold)),
+          // flexibleSpace: BackdropFilter(
+          //   filter: ImageFilter.blur(sigmaX: 100.0, sigmaY: 100.0),
+          //   child: Container(
+          //     decoration: const BoxDecoration(color: Colors.transparent),
+          //   ),
+          // ),
+        ),
         backgroundColor: Colors.black,
         body: BlocBuilder<ForecastBloc, ForecastBlocState>(
             builder: (context, state) {
@@ -45,8 +55,7 @@ class WeatherScreen extends StatelessWidget {
                 //         },
                 //         child:
                 Padding(
-              padding:
-                  const EdgeInsets.fromLTRB(40, 1.2 * kToolbarHeight, 40, 20),
+              padding: const EdgeInsets.fromLTRB(40, 0, 40, 20),
               child: SizedBox(
                 height: MediaQuery.of(context).size.height,
                 child: Stack(
@@ -114,39 +123,29 @@ class WeatherScreen extends StatelessWidget {
                                           color: Colors.white,
                                           fontWeight: FontWeight.w300)),
                                   const SizedBox(height: 8.0),
-                                  Text(
-                                      DateTime.now().hour < 12
-                                          ? 'Good Morning'
-                                          : DateTime.now().hour < 18
-                                              ? 'Good Afternoon'
-                                              : 'Good Night',
-                                      style: const TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold)),
                                 ],
                               ),
-                              ElevatedButton(
-                                onPressed: () {
-                                  Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const HomeScreen(),
-                                    ),
-                                  );
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.amber,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                ),
-                                child: const Center(
-                                    child: Icon(
-                                  Icons.arrow_back_ios_new,
-                                  // color: Colors.white,
-                                )),
-                              ),
+                              // ElevatedButton(
+                              //   onPressed: () {
+                              //     Navigator.pushReplacement(
+                              //       context,
+                              //       MaterialPageRoute(
+                              //         builder: (context) => const HomeScreen(),
+                              //       ),
+                              //     );
+                              //   },
+                              //   style: ElevatedButton.styleFrom(
+                              //     backgroundColor: Colors.amber,
+                              //     shape: RoundedRectangleBorder(
+                              //       borderRadius: BorderRadius.circular(10),
+                              //     ),
+                              //   ),
+                              //   child: const Center(
+                              //       child: Icon(
+                              //     Icons.arrow_back_ios_new,
+                              //     // color: Colors.white,
+                              //   )),
+                              // ),
                             ],
                           ),
                           Thermometer(

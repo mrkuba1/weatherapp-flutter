@@ -53,7 +53,7 @@ class HomeScreen extends StatelessWidget {
                 } else {
                   final forecastBloc = BlocProvider.of<ForecastBloc>(context);
                   forecastBloc.add(FetchForecast(cityName));
-                  Navigator.pushReplacement(
+                  Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => WeatherScreen(cityName: cityName),
