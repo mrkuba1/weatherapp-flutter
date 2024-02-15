@@ -50,7 +50,7 @@ class Secrets {
 
 <img src="screenshots/homescreen.png" alt="drawing" width="200"/>
 <img src="screenshots/weatherscreen.png" alt="drawing" width="200"/>
-
+<img src="screenshots/detailscreen.png" alt="drawing" width="200"/>
 
 ## Support
 
