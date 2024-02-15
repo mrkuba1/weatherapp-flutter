@@ -133,7 +133,7 @@ class WeatherFuture extends StatelessWidget {
                     ),
                   ])),
         ),
-        const SizedBox(height: 90),
+        const SizedBox(height: 20),
         Center(
             child: Text(
           'Last update ${forecast.current.lastUpdated}',

@@ -66,32 +66,28 @@ class Thermometer extends StatelessWidget {
             height: 150,
             child: AnimatedContainer(
               clipBehavior: Clip.none,
-              height: (heightFactor * 400).clamp(50, 500),
               alignment: Alignment.topCenter,
               duration: const Duration(milliseconds: 500),
               curve: Curves.easeInOut,
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+              child: Column(children: [
+                Image.asset(forecast.forecastday[0].day.condition
+                    .decode(forecast.forecastday[0].day.condition.code)),
+                Row(
                   children: [
-                    Image.asset(forecast.forecastday[0].day.condition
-                        .decode(forecast.forecastday[0].day.condition.code)),
-                    Row(
-                      children: [
-                        const SizedBox(width: 20),
-                        TemperatureLabel(
-                          temperature: forecast.current.tempC,
-                        ),
-                      ],
+                    const SizedBox(width: 70),
+                    TemperatureLabel(
+                      temperature: forecast.current.tempC,
                     ),
-                    Text(
-                      forecast.current.condition.text,
-                      style: const TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    ),
-                  ]),
+                  ],
+                ),
+                Text(
+                  forecast.current.condition.text,
+                  style: const TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
+              ]),
             ),
           ),
           const SizedBox(width: 16),

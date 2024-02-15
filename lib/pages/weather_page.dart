@@ -115,7 +115,7 @@ class WeatherPage extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('City ${state.forecast.location.name}',
+                                  Text('City 📍${state.forecast.location.name}',
                                       style: const TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.w300)),

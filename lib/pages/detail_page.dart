@@ -134,9 +134,9 @@ class DetailPageState extends State<DetailPage> {
                             });
                           },
                           child: SizedBox(
-                            height: expandedList[index] ? 150 : 90,
+                            height: expandedList[index] ? 290 : 90,
                             child: Container(
-                              height: 100,
+                              height: 120,
                               margin: const EdgeInsets.all(8),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -196,29 +196,155 @@ class DetailPageState extends State<DetailPage> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          Text(
-                                            'Humidity: ${forecastDataHour.humidity.toString()} %',
-                                            style: const TextStyle(
-                                              fontWeight: FontWeight.w400,
-                                              fontSize: 13,
-                                              color: Colors.white,
-                                            ),
+                                          const SizedBox(height: 10),
+                                          Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Image.asset(
+                                                'assets/humidity.png',
+                                                scale: 15,
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              Column(
+                                                children: [
+                                                  const SizedBox(
+                                                    height: 3,
+                                                  ),
+                                                  Text(
+                                                    'Humidity: ${forecastDataHour.humidity.toString()} %',
+                                                    style: const TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      fontSize: 13,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                ],
+                                              )
+                                            ],
                                           ),
-                                          Text(
-                                            'Wind: ${forecastDataHour.windKph.toString()} km/h', // Przykładowe dodatkowe informacje
-                                            style: const TextStyle(
-                                              fontWeight: FontWeight.w400,
-                                              fontSize: 13,
-                                              color: Colors.white,
-                                            ),
+                                          const SizedBox(height: 10),
+                                          Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Image.asset(
+                                                'assets/windy.png',
+                                                scale: 15,
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              Column(
+                                                children: [
+                                                  const SizedBox(
+                                                    height: 3,
+                                                  ),
+                                                  Text(
+                                                    'Windy: ${forecastDataHour.gustKph} Kph',
+                                                    style: const TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      fontSize: 13,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                ],
+                                              )
+                                            ],
                                           ),
-                                          Text(
-                                            'Condition: ${forecastDataHour.condition.text}', // Przykładowe dodatkowe informacje
-                                            style: const TextStyle(
-                                              fontWeight: FontWeight.w400,
-                                              fontSize: 13,
-                                              color: Colors.white,
-                                            ),
+                                          const SizedBox(height: 10),
+                                          Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Image.asset(
+                                                'assets/cloud.png',
+                                                scale: 15,
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              Column(
+                                                children: [
+                                                  const SizedBox(
+                                                    height: 3,
+                                                  ),
+                                                  Text(
+                                                    'Cloud: ${forecastDataHour.cloud} %',
+                                                    style: const TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      fontSize: 13,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                ],
+                                              )
+                                            ],
+                                          ),
+                                          const SizedBox(height: 10),
+                                          Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Image.asset(
+                                                'assets/rain.png',
+                                                scale: 15,
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              Column(
+                                                children: [
+                                                  const SizedBox(
+                                                    height: 3,
+                                                  ),
+                                                  Text(
+                                                    'Rain: ${forecastDataHour.chanceOfRain} %',
+                                                    style: const TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      fontSize: 13,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                ],
+                                              )
+                                            ],
+                                          ),
+                                          const SizedBox(height: 10),
+                                          Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Image.asset(
+                                                'assets/snow.png',
+                                                scale: 15,
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              Column(
+                                                children: [
+                                                  const SizedBox(
+                                                    height: 3,
+                                                  ),
+                                                  Text(
+                                                    'Snow: ${forecastDataHour.chanceOfSnow} %',
+                                                    style: const TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      fontSize: 13,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                ],
+                                              )
+                                            ],
                                           ),
                                         ],
                                       ),
