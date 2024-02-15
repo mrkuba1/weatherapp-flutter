@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weatherapp/data/forecast/models/forecast.dart';
-import 'package:weatherapp/screens/detail_page.dart';
+import 'package:weatherapp/pages/detail_page.dart';
 
 class WeatherFuture extends StatelessWidget {
   final Forecast forecast;
@@ -67,7 +67,7 @@ class WeatherFuture extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      DetailScreen(forecastday: forecastData)),
+                                      DetailPage(forecastday: forecastData)),
                             );
                           },
                           child: Container(
@@ -116,7 +116,7 @@ class WeatherFuture extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        DetailScreen(forecastday: forecast.forecastday[0]),
+                        DetailPage(forecastday: forecast.forecastday[0]),
                   ),
                 );
               },

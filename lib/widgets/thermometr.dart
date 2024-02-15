@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weatherapp/data/forecast/models/forecast.dart';
 import 'package:weatherapp/widgets/gradient_extension.dart';
+import 'package:weatherapp/widgets/temperature_label.dart';
 
 class Thermometer extends StatelessWidget {
   final Forecast forecast;
@@ -74,10 +75,7 @@ class Thermometer extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Image.asset(forecast.forecastday[0].day.condition
-                            .decode(forecast.forecastday[0].day.condition.code)
-                        // "assets/113.png",
-                        //  scale: 6,
-                        ),
+                        .decode(forecast.forecastday[0].day.condition.code)),
                     Row(
                       children: [
                         const SizedBox(width: 20),
@@ -131,31 +129,6 @@ class Thermometer extends StatelessWidget {
                 ),
               ],
             ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class TemperatureLabel extends StatelessWidget {
-  final double temperature;
-
-  const TemperatureLabel({
-    super.key,
-    required this.temperature,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 100,
-      child: Row(
-        children: [
-          Text(
-            '${temperature.round().toString()} °C',
-            style: const TextStyle(
-                fontSize: 15, fontWeight: FontWeight.bold, color: Colors.white),
           ),
         ],
       ),
