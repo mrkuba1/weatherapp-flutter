@@ -11,7 +11,7 @@ import 'package:weatherapp/widgets/weather_info.dart';
 class WeatherPage extends StatelessWidget {
   final String cityName;
 
-  const WeatherPage({Key? key, required this.cityName}) : super(key: key);
+  const WeatherPage({super.key, required this.cityName});
 
   @override
   Widget build(BuildContext context) {

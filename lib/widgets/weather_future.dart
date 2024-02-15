@@ -5,7 +5,7 @@ import 'package:weatherapp/pages/detail_page.dart';
 class WeatherFuture extends StatelessWidget {
   final Forecast forecast;
 
-  const WeatherFuture({Key? key, required this.forecast}) : super(key: key);
+  const WeatherFuture({super.key, required this.forecast});
 
   @override
   Widget build(BuildContext context) {

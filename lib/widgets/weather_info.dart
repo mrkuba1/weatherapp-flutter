@@ -4,7 +4,7 @@ import 'package:weatherapp/data/forecast/models/forecast.dart';
 class WeatherInfo extends StatelessWidget {
   final Forecast forecast;
 
-  const WeatherInfo({Key? key, required this.forecast}) : super(key: key);
+  const WeatherInfo({super.key, required this.forecast});
 
   @override
   Widget build(BuildContext context) {

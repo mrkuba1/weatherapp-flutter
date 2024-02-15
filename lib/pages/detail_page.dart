@@ -5,7 +5,7 @@ import 'package:weatherapp/data/forecast/models/hour.dart';
 
 class DetailPage extends StatefulWidget {
   final Forecastday forecastday;
-  const DetailPage({Key? key, required this.forecastday}) : super(key: key);
+  const DetailPage({super.key, required this.forecastday});
 
   @override
   DetailPageState createState() => DetailPageState();

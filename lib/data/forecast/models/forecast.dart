@@ -25,6 +25,20 @@ class Forecast {
           .toList(),
     );
   }
+
+  //  factory Forecast.fromMap(Map<String, dynamic> map) {
+  //   return Forecast(
+  //     location: Location.fromMap(map['location']),
+  //     current: Current.fromMap(map['current']),
+
+  //   );
+  // }
+
+  // String toJson() => json.encode(toMap());
+
+  // factory Forecast.fromJson(String source) =>
+  //     Forecast.fromMap(json.decode(source));
+
   @override
   String toString() {
     return 'Forecast{ '
