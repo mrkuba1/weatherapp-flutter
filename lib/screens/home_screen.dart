@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weatherapp/bloc/weather_bloc.dart';
 import 'package:weatherapp/bloc/weather_event.dart';
-import 'package:weatherapp/screens/weather_screen.dart';
+import 'package:weatherapp/pages/weather_page.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -56,7 +56,7 @@ class HomeScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => WeatherScreen(cityName: cityName),
+                      builder: (context) => WeatherPage(cityName: cityName),
                     ),
                   );
                 }
