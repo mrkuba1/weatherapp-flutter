@@ -7,6 +7,7 @@ import 'package:weatherapp/screens/home_screen.dart';
 import 'package:weatherapp/widgets/thermometr.dart';
 import 'package:weatherapp/widgets/weather_future.dart';
 import 'package:weatherapp/widgets/weather_info.dart';
+import 'package:weatherapp/widgets/weather_per_hour.dart';
 
 class WeatherPage extends StatelessWidget {
   final String cityName;
@@ -38,17 +39,7 @@ class WeatherPage extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           } else if (state is ForecastBlocSuccess) {
-            return
-                // SingleChildScrollView(
-                //     physics: AlwaysScrollableScrollPhysics(),
-                //     child: RefreshIndicator(
-                //         onRefresh: () async {
-                //           final forecastBloc =
-                //               BlocProvider.of<ForecastBloc>(context);
-                //           forecastBloc.add(FetchForecast(cityName));
-                //         },
-                //         child:
-                Padding(
+            return Padding(
               padding: const EdgeInsets.fromLTRB(40, 0, 40, 20),
               child: SizedBox(
                 height: MediaQuery.of(context).size.height,
@@ -129,6 +120,10 @@ class WeatherPage extends StatelessWidget {
                           ),
                           WeatherInfo(forecast: state.forecast),
                           WeatherFuture(forecast: state.forecast),
+                          WeatherFuturePerHour(
+                            forecastday: state.forecast.forecastday[0],
+                            forecast: state.forecast,
+                          ),
                         ],
                       ),
                     )

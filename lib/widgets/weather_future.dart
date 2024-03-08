@@ -45,7 +45,7 @@ class WeatherFuture extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: 130,
+                height: 120,
                 width: 260,
                 child: Center(
                   child: ListView.separated(
@@ -102,43 +102,43 @@ class WeatherFuture extends StatelessWidget {
                 ),
               ),
             ]),
-        const Padding(
-          padding: EdgeInsets.symmetric(vertical: 1.0),
-          child: Divider(
-            color: Colors.grey,
-          ),
-        ),
-        SizedBox(
-          height: 40,
-          child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        DetailPage(forecastday: forecast.forecastday[0]),
-                  ),
-                );
-              },
-              child: const Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'More details',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14,
-                          color: Colors.white),
-                    ),
-                  ])),
-        ),
-        const SizedBox(height: 20),
-        Center(
-            child: Text(
-          'Last update ${forecast.current.lastUpdated}',
-          style: const TextStyle(color: Colors.grey),
-        )),
+        // const Padding(
+        //   padding: EdgeInsets.symmetric(vertical: 1.0),
+        //   child: Divider(
+        //     color: Colors.grey,
+        //   ),
+        // ),
+        // SizedBox(
+        //   height: 40,
+        //   child: GestureDetector(
+        //       onTap: () {
+        //         Navigator.push(
+        //           context,
+        //           MaterialPageRoute(
+        //             builder: (context) =>
+        //                 DetailPage(forecastday: forecast.forecastday[0]),
+        //           ),
+        //         );
+        //       },
+        //       child: const Row(
+        //           crossAxisAlignment: CrossAxisAlignment.start,
+        //           mainAxisAlignment: MainAxisAlignment.center,
+        //           children: [
+        //             Text(
+        //               'More details',
+        //               style: TextStyle(
+        //                   fontWeight: FontWeight.w600,
+        //                   fontSize: 14,
+        //                   color: Colors.white),
+        //             ),
+        //           ])),
+        // ),
+        // const SizedBox(height: 20),
+        // Center(
+        //     child: Text(
+        //   'Last update ${forecast.current.lastUpdated}',
+        //   style: const TextStyle(color: Colors.grey),
+        // )),
       ],
     );
   }
